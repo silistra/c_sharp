@@ -1,9 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
- 
 class Program02
 {
     static void Main()
@@ -14,11 +9,10 @@ class Program02
         {
             terrain[i] = int.Parse(Input[i]);
         }
-        int maxOffset = Math.Min(1000, Input.Length /2);
         int bestResult = 1;
         for (int i = 0; i < terrain.Length; i++)
         {
-            for (int j = -maxOffset; j < maxOffset; j++)
+            for (int j = 1; j < terrain.Length; j++)
             {
                 int result = Check(i, j,terrain);
                 if (result>bestResult)
@@ -43,10 +37,6 @@ class Program02
             if (currentPosition >= terrain.Length)
             {
                 currentPosition -= terrain.Length;
-            }
-            if (currentPosition<0)
-            {
-                currentPosition += terrain.Length;
             }
         } while (terrain[currentPosition]>lastPositionNumber);
         return result;
